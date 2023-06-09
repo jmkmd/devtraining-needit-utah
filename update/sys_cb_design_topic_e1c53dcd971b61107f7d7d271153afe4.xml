@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_design_topic">
+    <sys_cb_design_topic action="INSERT_OR_UPDATE">
+        <compiled_topic display_value="Submit a request">2dc53dcd971b61107f7d7d271153afdf</compiled_topic>
+        <design_definition>{"type":"FlowTopic","type":"FlowTopic","triggers":[{"type":"Trigger","name":"ea338d7a683742268729e67e36fc2bf2","triggerType":"request","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"id":"ea338d7a683742268729e67e36fc2bf2"}],"goals":[{"name":"primary","trigger_id":"ea338d7a683742268729e67e36fc2bf2","nodes":[{"type":"StartGoal","type":"StartGoal","goal_id":"primary","greeting_msg":{"type":"String","type":"String","mode":"string","value":""},"id":"52c97273c0654f909a80c34c2a8daa1c","name":"Start"},{"type":"TerminateGoal","type":"TerminateGoal","goal_id":"primary","confirmation_msg":{"type":"String","type":"String","mode":"string","value":""},"id":"4115f1b65b864efc87cdf7ec663736b4","name":"End"},{"type":"InputPrompt","type":"InputPrompt","variable_id":"70c18a8db5c046e290b04096cdeaba8d","message":{"type":"String","type":"String","mode":"string","value":"gs.getMessageLang(\"Enter your user id\", vaContext.getRequesterLang())"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true},"skippable":{"type":"Applicability","type":"Applicability","mode":"script","value":"false"},"id":"eadfd8e2392943d4aeb076a5ed2e6699","name":"User Id","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"formatType":"Text","validationScript":""},{"type":"InputPrompt","type":"InputPrompt","variable_id":"47409035b59c49c39a3b1b32ed9e3221","message":{"type":"String","type":"String","mode":"string","value":"gs.getMessageLang(\"Enter your office phone number\", vaContext.getRequesterLang())"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true},"skippable":{"type":"Applicability","type":"Applicability","mode":"script","value":"false"},"id":"03e127e6ad5b4e3aa272c76bcec0ada8","name":"OfficePhone","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"formatType":"Text","validationScript":""},{"type":"ScriptedAction","type":"ScriptedAction","script":"(function execute() {\n    var gr = new GlideRecord(\"sys_user\");\n    gr.addQuery(\"user_name\", vaInputs.user_id);\n    gr.addQuery(\"phone\", vaInputs.officephone);\n    gr.query();\n    if(gr.next()) {\n        vaVars.global_linkaccount_verification_userid = gr.getValue(\"sys_id\");\n    } else {\n        vaVars.global_linkaccount_verification_userid = \"\";\n    }\n})()\n","id":"c7158a70a046479481579ca443591fb8","name":"Script Node","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"}}],"edges":[{"type":"Edge","source_node_id":"52c97273c0654f909a80c34c2a8daa1c","target_node_id":"eadfd8e2392943d4aeb076a5ed2e6699","id":"ca7c085c73584da394ac26baeee07578"},{"type":"Edge","source_node_id":"eadfd8e2392943d4aeb076a5ed2e6699","target_node_id":"03e127e6ad5b4e3aa272c76bcec0ada8","id":"0ae6f5db391145a4ac6ff40cb3e0a712"},{"type":"Edge","source_node_id":"03e127e6ad5b4e3aa272c76bcec0ada8","target_node_id":"c7158a70a046479481579ca443591fb8","id":"7f8393e215324c4796969b31fed73232"},{"type":"Edge","source_node_id":"c7158a70a046479481579ca443591fb8","target_node_id":"4115f1b65b864efc87cdf7ec663736b4","id":"ec68a768df5a4580a549939f85c7ba6d"}],"id":"primary"}],"script_variables":[],"glide_variables":[{"type":"Reference","type":"Reference","table":"sys_user","id":"0764ca80be0c471ab7d5fbc988e94ec6","name":"user","formatType":"text","secure":false,"sensitive":false,"list":false},{"type":"VariableDto","type":"String","name":"user_id","list":false,"id":"70c18a8db5c046e290b04096cdeaba8d","formatType":"Text","validationScript":"","secure":false,"sensitive":false},{"type":"VariableDto","type":"String","name":"officephone","list":false,"id":"47409035b59c49c39a3b1b32ed9e3221","formatType":"Text","validationScript":"","secure":false,"sensitive":false}],"applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"roles":["public"],"scope":"6ead8e780f603200cd674f8ce1050ed1","domain":"global","topic_type":"STANDARD","channels":[],"id":"2394318d971b61107f7d7d271153afe7","name":"Submit a request","key_phrases":["Submit a request","Account Link User Validation(Template)"],"nlu_provider":"","nlu_model":"","nlu_model_label":"","nlu_intent":"","nlu_intent_label":"","flexible_conversation_switching":false,"autopilot_topic":false,"design_categories":[],"triggerable_by_notification":false,"library":false,"readOnly":false,"nluMapping":"[]"}</design_definition>
+        <design_topic_id>2394318d971b61107f7d7d271153afe7</design_topic_id>
+        <graph>{
+  "graph_api_version": "1.0.42",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "52c97273c0654f909a80c34c2a8daa1c": {
+          "id": "52c97273c0654f909a80c34c2a8daa1c",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "4115f1b65b864efc87cdf7ec663736b4": {
+          "id": "4115f1b65b864efc87cdf7ec663736b4",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "eadfd8e2392943d4aeb076a5ed2e6699": {
+          "id": "eadfd8e2392943d4aeb076a5ed2e6699",
+          "stepType": "Prompt",
+          "name": "User Id",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Enter your user id"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "70c18a8db5c046e290b04096cdeaba8d",
+          "inputType": {
+            "format": "Text",
+            "script": ""
+          }
+        },
+        "03e127e6ad5b4e3aa272c76bcec0ada8": {
+          "id": "03e127e6ad5b4e3aa272c76bcec0ada8",
+          "stepType": "Prompt",
+          "name": "OfficePhone",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Enter your office phone number"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "47409035b59c49c39a3b1b32ed9e3221",
+          "inputType": {
+            "format": "Text",
+            "script": ""
+          }
+        },
+        "c7158a70a046479481579ca443591fb8": {
+          "id": "c7158a70a046479481579ca443591fb8",
+          "name": "Script Node",
+          "script": "(function execute() {\n    var gr = new GlideRecord(\"sys_user\");\n    gr.addQuery(\"user_name\", vaInputs.user_id);\n    gr.addQuery(\"phone\", vaInputs.officephone);\n    gr.query();\n    if(gr.next()) {\n        vaVars.global_linkaccount_verification_userid = gr.getValue(\"sys_id\");\n    } else {\n        vaVars.global_linkaccount_verification_userid = \"\";\n    }\n})()\n",
+          "stepType": "ScriptAction",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        }
+      },
+      "edges": [
+        {
+          "id": "ca7c085c73584da394ac26baeee07578",
+          "edgeType": "Edge",
+          "source": "52c97273c0654f909a80c34c2a8daa1c",
+          "target": "eadfd8e2392943d4aeb076a5ed2e6699",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "0ae6f5db391145a4ac6ff40cb3e0a712",
+          "edgeType": "Edge",
+          "source": "eadfd8e2392943d4aeb076a5ed2e6699",
+          "target": "03e127e6ad5b4e3aa272c76bcec0ada8",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "7f8393e215324c4796969b31fed73232",
+          "edgeType": "Edge",
+          "source": "03e127e6ad5b4e3aa272c76bcec0ada8",
+          "target": "c7158a70a046479481579ca443591fb8",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "ec68a768df5a4580a549939f85c7ba6d",
+          "edgeType": "Edge",
+          "source": "c7158a70a046479481579ca443591fb8",
+          "target": "4115f1b65b864efc87cdf7ec663736b4",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "0764ca80be0c471ab7d5fbc988e94ec6": {
+      "category": "vaInputs",
+      "id": "0764ca80be0c471ab7d5fbc988e94ec6",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    },
+    "70c18a8db5c046e290b04096cdeaba8d": {
+      "id": "70c18a8db5c046e290b04096cdeaba8d",
+      "name": "user_id",
+      "label": "User Id",
+      "varType": "string",
+      "secure": false,
+      "category": "vaInputs",
+      "encryptionHashFunction": "SHA-256",
+      "encryptionSalt": {
+        "value": "MTY2MjAzMTg3MjU1MyBWQSBEZXNpZ25lciBpcyBhd2Vzb21l",
+        "mode": "simple"
+      },
+      "nodeId": "eadfd8e2392943d4aeb076a5ed2e6699",
+      "isHidden": false
+    },
+    "47409035b59c49c39a3b1b32ed9e3221": {
+      "id": "47409035b59c49c39a3b1b32ed9e3221",
+      "name": "officephone",
+      "label": "OfficePhone",
+      "varType": "string",
+      "secure": false,
+      "category": "vaInputs",
+      "encryptionHashFunction": "SHA-256",
+      "encryptionSalt": {
+        "value": "MTY2MjAzMTg5MDQyMiBWQSBEZXNpZ25lciBpcyBhd2Vzb21l",
+        "mode": "simple"
+      },
+      "nodeId": "03e127e6ad5b4e3aa272c76bcec0ada8",
+      "isHidden": false
+    }
+  }
+}</graph>
+        <name>Submit a request</name>
+        <sys_class_name>sys_cb_design_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-06-06 12:37:56</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>e1c53dcd971b61107f7d7d271153afe4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>FlowTopic</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_cb_design_topic_e1c53dcd971b61107f7d7d271153afe4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-06-06 12:37:56</sys_updated_on>
+        <type>FlowTopic</type>
+    </sys_cb_design_topic>
+</record_update>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_design_topic">
+    <sys_cb_design_topic action="INSERT_OR_UPDATE">
+        <compiled_topic display_value="Report IT Issue">a045b1cd971b61107f7d7d271153af65</compiled_topic>
+        <design_definition>{"type":"FlowTopic","type":"FlowTopic","triggers":[{"type":"Trigger","name":"e78483db083248bf8b7f60809cac62ea","triggerType":"request","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"id":"e78483db083248bf8b7f60809cac62ea"}],"goals":[{"name":"primary","trigger_id":"e78483db083248bf8b7f60809cac62ea","nodes":[{"type":"StartGoal","type":"StartGoal","goal_id":"primary","greeting_msg":{"type":"String","type":"String","mode":"string","value":""},"id":"6f27f5b01e5a45bfa158f66fda48555b","name":"Start"},{"type":"TerminateGoal","type":"TerminateGoal","goal_id":"primary","confirmation_msg":{"type":"String","type":"String","mode":"string","value":""},"id":"b53b43a52e654f81a4c228018566b43f","name":"End"},{"type":"InputPrompt","type":"InputPrompt","variable_id":"3756a220886f48169f9947d070c8e69e","message":{"type":"String","type":"String","mode":"string","value":"gs.getMessageLang(\"Enter your user id\", vaContext.getRequesterLang())"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true},"skippable":{"type":"Applicability","type":"Applicability","mode":"script","value":"false"},"id":"c489a797c574491c875a1c515cd7df7f","name":"User Id","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"formatType":"Text","validationScript":""},{"type":"InputPrompt","type":"InputPrompt","variable_id":"833f8f4434444f4199959880515fd86b","message":{"type":"String","type":"String","mode":"string","value":"gs.getMessageLang(\"Enter your office phone number\", vaContext.getRequesterLang())"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true},"skippable":{"type":"Applicability","type":"Applicability","mode":"script","value":"false"},"id":"aa186dae314e4f7fb3d36a8e6cf89145","name":"OfficePhone","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"formatType":"Text","validationScript":""},{"type":"ScriptedAction","type":"ScriptedAction","script":"(function execute() {\n    var gr = new GlideRecord(\"sys_user\");\n    gr.addQuery(\"user_name\", vaInputs.user_id);\n    gr.addQuery(\"phone\", vaInputs.officephone);\n    gr.query();\n    if(gr.next()) {\n        vaVars.global_linkaccount_verification_userid = gr.getValue(\"sys_id\");\n    } else {\n        vaVars.global_linkaccount_verification_userid = \"\";\n    }\n})()\n","id":"b978e39e547c4ea98d87294c3fdafb11","name":"Script Node","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"}}],"edges":[{"type":"Edge","source_node_id":"6f27f5b01e5a45bfa158f66fda48555b","target_node_id":"c489a797c574491c875a1c515cd7df7f","id":"7f1649156e0b410c9431e7d8d0d15081"},{"type":"Edge","source_node_id":"c489a797c574491c875a1c515cd7df7f","target_node_id":"aa186dae314e4f7fb3d36a8e6cf89145","id":"4c1a7bca3e78450f8df4f6dd7528d2d9"},{"type":"Edge","source_node_id":"aa186dae314e4f7fb3d36a8e6cf89145","target_node_id":"b978e39e547c4ea98d87294c3fdafb11","id":"6c3fb749a8024cb3bc824601d0feb0bd"},{"type":"Edge","source_node_id":"b978e39e547c4ea98d87294c3fdafb11","target_node_id":"b53b43a52e654f81a4c228018566b43f","id":"6a7dd35604de42898b5986ab92cbd327"}],"id":"primary"}],"script_variables":[],"glide_variables":[{"type":"Reference","type":"Reference","table":"sys_user","id":"610a4d7824d848b191ffdfac90faee47","name":"user","formatType":"text","secure":false,"sensitive":false,"list":false},{"type":"VariableDto","type":"String","name":"user_id","list":false,"id":"3756a220886f48169f9947d070c8e69e","formatType":"Text","validationScript":"","secure":false,"sensitive":false},{"type":"VariableDto","type":"String","name":"officephone","list":false,"id":"833f8f4434444f4199959880515fd86b","formatType":"Text","validationScript":"","secure":false,"sensitive":false}],"applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"roles":["public"],"scope":"6ead8e780f603200cd674f8ce1050ed1","domain":"global","topic_type":"STANDARD","channels":[],"id":"5544bd4d971b61107f7d7d271153af61","name":"Report IT Issue","key_phrases":["Report IT Issue","Account Link User Validation(Template)"],"nlu_provider":"","nlu_model":"","nlu_model_label":"","nlu_intent":"","nlu_intent_label":"","flexible_conversation_switching":false,"autopilot_topic":false,"design_categories":[],"triggerable_by_notification":false,"library":false,"csTopicId":"a045b1cd971b61107f7d7d271153af65","readOnly":false,"nluMapping":"[]"}</design_definition>
+        <design_topic_id>5544bd4d971b61107f7d7d271153af61</design_topic_id>
+        <graph>{
+  "graph_api_version": "1.0.42",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "6f27f5b01e5a45bfa158f66fda48555b": {
+          "id": "6f27f5b01e5a45bfa158f66fda48555b",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "b53b43a52e654f81a4c228018566b43f": {
+          "id": "b53b43a52e654f81a4c228018566b43f",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "c489a797c574491c875a1c515cd7df7f": {
+          "id": "c489a797c574491c875a1c515cd7df7f",
+          "stepType": "Prompt",
+          "name": "User Id",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Enter your user id"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "3756a220886f48169f9947d070c8e69e",
+          "inputType": {
+            "format": "Text",
+            "script": ""
+          }
+        },
+        "aa186dae314e4f7fb3d36a8e6cf89145": {
+          "id": "aa186dae314e4f7fb3d36a8e6cf89145",
+          "stepType": "Prompt",
+          "name": "OfficePhone",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Enter your office phone number"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "833f8f4434444f4199959880515fd86b",
+          "inputType": {
+            "format": "Text",
+            "script": ""
+          }
+        },
+        "b978e39e547c4ea98d87294c3fdafb11": {
+          "id": "b978e39e547c4ea98d87294c3fdafb11",
+          "name": "Script Node",
+          "script": "(function execute() {\n    var gr = new GlideRecord(\"sys_user\");\n    gr.addQuery(\"user_name\", vaInputs.user_id);\n    gr.addQuery(\"phone\", vaInputs.officephone);\n    gr.query();\n    if(gr.next()) {\n        vaVars.global_linkaccount_verification_userid = gr.getValue(\"sys_id\");\n    } else {\n        vaVars.global_linkaccount_verification_userid = \"\";\n    }\n})()\n",
+          "stepType": "ScriptAction",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        }
+      },
+      "edges": [
+        {
+          "id": "7f1649156e0b410c9431e7d8d0d15081",
+          "edgeType": "Edge",
+          "source": "6f27f5b01e5a45bfa158f66fda48555b",
+          "target": "c489a797c574491c875a1c515cd7df7f",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "4c1a7bca3e78450f8df4f6dd7528d2d9",
+          "edgeType": "Edge",
+          "source": "c489a797c574491c875a1c515cd7df7f",
+          "target": "aa186dae314e4f7fb3d36a8e6cf89145",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "6c3fb749a8024cb3bc824601d0feb0bd",
+          "edgeType": "Edge",
+          "source": "aa186dae314e4f7fb3d36a8e6cf89145",
+          "target": "b978e39e547c4ea98d87294c3fdafb11",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "6a7dd35604de42898b5986ab92cbd327",
+          "edgeType": "Edge",
+          "source": "b978e39e547c4ea98d87294c3fdafb11",
+          "target": "b53b43a52e654f81a4c228018566b43f",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "610a4d7824d848b191ffdfac90faee47": {
+      "category": "vaInputs",
+      "id": "610a4d7824d848b191ffdfac90faee47",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    },
+    "3756a220886f48169f9947d070c8e69e": {
+      "id": "3756a220886f48169f9947d070c8e69e",
+      "name": "user_id",
+      "label": "User Id",
+      "varType": "string",
+      "secure": false,
+      "category": "vaInputs",
+      "encryptionHashFunction": "SHA-256",
+      "encryptionSalt": {
+        "value": "MTY2MjAzMTg3MjU1MyBWQSBEZXNpZ25lciBpcyBhd2Vzb21l",
+        "mode": "simple"
+      },
+      "nodeId": "c489a797c574491c875a1c515cd7df7f",
+      "isHidden": false
+    },
+    "833f8f4434444f4199959880515fd86b": {
+      "id": "833f8f4434444f4199959880515fd86b",
+      "name": "officephone",
+      "label": "OfficePhone",
+      "varType": "string",
+      "secure": false,
+      "category": "vaInputs",
+      "encryptionHashFunction": "SHA-256",
+      "encryptionSalt": {
+        "value": "MTY2MjAzMTg5MDQyMiBWQSBEZXNpZ25lciBpcyBhd2Vzb21l",
+        "mode": "simple"
+      },
+      "nodeId": "aa186dae314e4f7fb3d36a8e6cf89145",
+      "isHidden": false
+    }
+  }
+}</graph>
+        <name>Report IT Issue</name>
+        <sys_class_name>sys_cb_design_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-06-06 12:35:41</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>2845f1cd971b61107f7d7d271153afd2</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>FlowTopic</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_cb_design_topic_2845f1cd971b61107f7d7d271153afd2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-06-06 12:37:36</sys_updated_on>
+        <type>FlowTopic</type>
+    </sys_cb_design_topic>
+</record_update>
